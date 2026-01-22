@@ -1,0 +1,116 @@
+@import "colors.css";
+
+* {
+    margin: 0px;
+    padding: 2px 2px;
+    border: none;
+    /* background-color: blue; */
+    /* border-radius: 100px; */
+    font-family: "JetBrains Nerd Font", "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px;
+    /* min-height: 0; */
+}
+
+window#waybar {
+    /* margin: 0px;
+     *    padding: 0px; */
+    background: transparent;
+    /* border-bottom: 3px solid rgba(100, 114, 125, 0.5); */
+    color: white;
+    /* font-weight: bold; */
+}
+
+tooltip {
+    background: rgba(43, 48, 59, 0.9);
+    border: 1px solid rgba(100, 114, 125, 0.5);
+}
+tooltip label {
+    color: @on_secondary;
+}
+
+#workspaces {
+background: @surface_container;
+color: @on_primary_fixed;
+border-radius: 100px;
+/* margin: 0px 0px; */
+padding: 4px;
+border:none;
+
+/* border-bottom: 3px solid rgba(100, 114, 125, 0.5); */
+}
+
+#workspaces button {
+/* padding: 0px 20px; */
+padding: 1px 15px;
+margin: 2px;
+background: @surface_container;
+color: @on_primary_fixed_variant;
+/* border-bottom: 3px solid transparent; */
+border-radius: 100px;
+transition:
+background 0.3s ease,
+color 0.3s ease,
+border-color 0.3s ease,
+/* padding 0.2s ease, */
+transform 0.2s ease; /* optional for scale effect */
+}
+
+#workspaces button.focused {
+padding: 4px;
+margin: 2px;
+background: @on_primary_container;
+color: @on_primary_fixed;
+/* border-bottom: 3px solid transparent; */
+border-radius: 10px;
+}
+
+#workspaces button:hover {
+color: @primary;
+/* padding: 0px 10px; */
+background: @on_primary_fixed_variant;
+/* background: @inverse_on_surface_10; */
+}
+
+#workspaces button.active {
+padding:0px 10px;
+margin:0px;
+background: @primary;
+color: @on_primary_fixed;
+/* border-bottom: 3px solid transparent; */
+border-radius:10px;
+}
+
+#clock,
+#battery,
+#pulseaudio,
+#network,
+#backlight,
+#custom-swaync,
+#tray {
+color: @on_primary_fixed;
+padding: 2px 20px;
+margin: 2px;
+border-radius: 50px;
+background-color: @on_primary_container;
+}
+
+#clock.tooltip {
+transition: opacity 0.3s ease;
+opacity: 0;
+}
+
+#clock:hover .tooltip {
+opacity: 1;
+}
+
+#cava {
+/* padding: 0px; */
+margin: 0px;
+color: @primary;
+padding: 0px;
+}
+
+#window {
+color: white;
+font-weight: bold;
+}
