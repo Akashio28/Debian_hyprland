@@ -1,221 +1,231 @@
-@import "colors.css";
+@import "/home/acacio/.config/waybar/wallust/colors-waybar.css";
 
+/* ══════════════════════════════════════════════════
+ *   WALLUST DYNAMIC COLORS
+ *   ══════════════════════════════════════════════════ */
 * {
-    margin: 0px;
-    padding: 2px 2px;
+    margin: 1px;
+    padding: 0px;
     border: none;
-    font-family: "JetBrains Nerd Font", "Helvetica Neue", Arial, sans-serif;
-    font-size: 14px;
+    font-family: "JetBrains Nerd Font", monospace;
+    font-size: 12px;
+    min-height: 0;
 }
 
+/* ── MAIN BAR ─────────────────────────────────── */
 window#waybar {
-    background-color: alpha(@surface_container_highest, 0.0);
-    color: white;
+    background: transparent;
+    color: @foreground;
 }
 
-/* Style untuk module label */
-label.module {
-    color: @primary;
-    font-weight: bold;
-    padding: 0px 10px;
-}
-
-/* Tooltip styling */
+/* ── TOOLTIP ──────────────────────────────────── */
 tooltip {
-    background: rgba(43, 48, 59, 0.9);
-    border: 1px solid rgba(100, 114, 125, 0.5);
-    border-radius: 10px;
+    background: @background;
+    border: 1px solid @color8;
+    border-radius: 12px;
+    padding: 8px;
 }
 tooltip label {
-    color: @on_secondary;
+    color: @foreground;
+    padding: 4px 8px;
 }
 
-/* WORKSPACES SECTION */
+#clock calendar {
+    background: @background;
+    color: @foreground;
+    border: none;
+    padding: 8px;
+}
+#clock calendar:selected {
+    color: @foreground;
+    background: @color8;
+    border-radius: 4px;
+}
+#clock calendar.header {
+    color: @color12;
+    font-weight: bold;
+    border: none;
+}
+#clock calendar.button {
+    color: @color11;
+    border-radius: 4px;
+}
+#clock calendar.highlight {
+    color: @color11;
+}
+#clock calendar:indeterminate {
+    color: @color8;
+}
+
+/* ── WORKSPACES CONTAINER ─────────────────────── */
 #workspaces {
-background: alpha(@background, 0.5);
-color: @on_primary_fixed;
-border-radius: 100px;
-padding: 4px;
-border: 1px solid @on_secondary;
-margin: 4px;
+    background: @background;
+    border: 0px solid @color8;
+    border-radius: 17px;
+    padding: 1px 40px;
+    margin: 4px 4px;
 }
 
+/* ── WORKSPACES BUTTON ─────────────────────────── */
 #workspaces button {
-padding: 0px 15px;
-margin: 2px;
-color: @on_surface;
-border-radius: 100px;
-transition: all 0.3s ease;
+    padding: 4px;
+    margin: 4px 3px;
+    background-color: @color8;
+    color: transparent;
+    border-radius: 45%;
+    min-width: 20px;
+    min-height: 20px;
+    min-height: 8px;
+    font-size: 0px;
+    transition: all 0.2s ease;
 }
 
+#workspaces button.active,
 #workspaces button.focused {
-padding: 4px;
-margin: 2px;
-background: @on_primary_container;
-color: @on_primary_fixed;
-border-radius: 100px;
-}
-
-#workspaces button.active {
-padding: 0px 15px;
-margin: 2px;
-background: @color6;
-color: @on_primary_fixed;
-border-radius: 100px;
+    background: @foreground;
+    color: @background;
+    border-radius: 20px;
+    padding: 4px 16px;
+    min-width: 40px;
+    font-size: 11px;
 }
 
 #workspaces button:hover {
-color: @primary;
-background: @on_primary_fixed_variant;
+    background: @color8;
+    border-radius: 20px;
+    min-width: 20px;
 }
 
-/* MODULE STYLING - General */
+#workspaces button.urgent {
+    background: @color1;
+    color: @foreground;
+}
+
+/* ── ALL MODULES ──────────────────────────────── */
 #clock,
-#battery,
 #pulseaudio,
-#network,
 #backlight,
 #custom-swaync,
 #tray,
-#custom-temperature,
-#custom-light,
 #custom-nix,
-#custom-bluetooth,
-#cava,
-#window {
-color: @color7;
-padding: 2px 15px;
-margin: 2px;
-border-radius: 50px;
-background-color: alpha(@background, 0.5);
+#network,
+#bluetooth,
+#battery {
+background: @background;
+color: @foreground;
+border: 0px solid @color8;
+border-radius: 19px;
+padding: 10px 20px;
+margin: 4px 2px;
 transition: all 0.2s ease;
 }
 
-/* Individual module borders */
-#custom-bluetooth{
-border: 1px solid @on_secondary;
-}
-
-#custom-nix{
-border: 1px solid @on_secondary;
-}
-#clock {
-border: 1px solid @on_secondary;
-}
-
-#battery {
-border: 1px solid @on_secondary;
-}
-
-#custom-swaync {
-border: 1px solid @on_secondary;
-}
-
-#tray {
-border: 1px solid @on_secondary;
-}
-
-/* Temperature & Light combo styling */
-#custom-temperature {
-border-top-right-radius: 0;
-border-bottom-right-radius: 0;
-margin-right: 0px;
-border-left: 1px solid @on_secondary;
-border-top: 1px solid @on_secondary;
-border-bottom: 1px solid @on_secondary;
-}
-
-#custom-light {
-border-top-left-radius: 0;
-border-bottom-left-radius: 0;
-margin-left: 0px;
-border-right: 1px solid @on_secondary;
-border-top: 1px solid @on_secondary;
-border-bottom: 1px solid @on_secondary;
-}
-
-/* Backlight & Pulseaudio combo styling */
-#backlight {
-border-top-right-radius: 0;
-border-bottom-right-radius: 0;
-margin-right: 0px;
-border-left: 1px solid @on_secondary;
-border-top: 1px solid @on_secondary;
-border-bottom: 1px solid @on_secondary;
-}
-
-#pulseaudio {
-border-top-left-radius: 0;
-border-bottom-left-radius: 0;
-margin-left: 0px;
-border-right: 1px solid @on_secondary;
-border-top: 1px solid @on_secondary;
-border-bottom: 1px solid @on_secondary;
-}
-
-/* HOVER EFFECTS - Menggabungkan kedua style */
+/* Hover all modules */
 #clock:hover,
-#battery:hover,
 #pulseaudio:hover,
-#network:hover,
 #backlight:hover,
 #custom-swaync:hover,
-#tray:hover,
-#custom-temperature:hover,
-#custom-light:hover,
 #custom-nix:hover,
 #custom-bluetooth:hover,
-#cava:hover,
-#window:hover {
-background: @primary;
-color: @on_primary_fixed;
-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-border-color: @primary; /* Border ikut berubah warna */
+#network:hover {
+    background: @foreground;
+    color: @background;
 }
 
-/* ACTIVE EFFECT (saat diklik) */
-#clock:active,
-#battery:active,
-#pulseaudio:active,
-#network:active,
-#backlight:active,
-#custom-swaync:active,
-#custom-temperature:active,
-#custom-light:active,
-#custom-nix:active,
-#custom-bluetooth:active,
-#cava:active,
-#window:active {
-opacity: 0.7;
+/* Status WIFI */
+#network.wifi {
+    color: @color6;
 }
 
-/* CAVA specific */
-#cava {
-color: @primary;
-padding: 0px;
-margin: 0px;
+/* Status Ethernet */
+#network.ethernet {
+    color: @color2;
 }
 
-/* WINDOW specific */
+/* Status Disconnected */
+#network.disconnected {
+    color: @color1;
+}
+
+/* ── CAVA ─────────────────────────────────────── */
+#custom-cava {
+    color: transparent;
+    background: transparent;
+    border: none;
+    padding: 4px 12px;
+    font-size: 10px;
+    letter-spacing: 1px;
+    margin: 4px 2px;
+}
+
+#custom-cava.active {
+    color: @color4;
+    background: @background;
+    border: 0px solid @color8;
+    border-radius: 19px;
+}
+
+#custom-cava.silent {
+    color: transparent;
+    background: transparent;
+    border: none;
+}
+
+/* ── TRAY ─────────────────────────────────────── */
+#tray {
+    padding: 6px 8px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+/* ── BATTERY ──────────────────────────────────── */
+#battery {
+    background: @foreground;
+    color: @background;        /* teks gelap, kontras di atas putih */
+    border: 0px solid @color6;
+    border-radius: 19px;
+    padding: 10px 20px;
+    margin: 4px 2px;
+    transition: all 0.2s ease;
+}
+
+#battery.charging {
+    color: @color2;            /* hijau saat charging */
+}
+
+#battery.warning:not(.charging) {
+    color: @color8;
+}
+
+#battery.critical:not(.charging) {
+    color: @color8;
+    animation: blink 0.6s linear infinite alternate;
+}
+
+/* ── MODUL LAINNYA ────────────────────────────── */
+#bluetooth { color: @color4; }
+#cpu       { color: @color2; }
+#memory    { color: @color6; }
+#pulseaudio.muted { color: @color8; }
+
+/* ── WINDOW MODULE ────────────────────────────── */
+#window,
+window#waybar.empty #window,
+window#waybar.solo #window,
+window#waybar.floating #window,
+window#waybar.fullscreen #window {
+    border: none;
+    background: transparent;
+}
+
 #window {
-color: white;
-font-weight: bold;
+    color: @color8;
+    font-size: 11px;
 }
 
-/* Animation for blinking */
+/* ── BLINK ANIMATION ──────────────────────────── */
 @keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: black;
-    }
-}
-
-/* Tooltip untuk clock (dari file pertama) */
-#clock.tooltip {
-transition: opacity 0.3s ease;
-opacity: 0;
-}
-
-#clock:hover .tooltip {
-opacity: 1;
+    to { opacity: 0.35; }
 }
